@@ -2,3 +2,6 @@
 Thumbs.db
 *.log
 node_modules/
+
+# large video files - host externally (YouTube/Vimeo) instead of committing
+assets/images/*.mp4
