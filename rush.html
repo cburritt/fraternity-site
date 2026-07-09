@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter Name | Rush</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="nav-brand" href="index.html">CHAPTER LETTERS</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="rush.html">Rush</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" style="padding: 3rem 1.5rem;">
+    <div class="container">
+      <h1>Rush Chapter Name</h1>
+      <p>Interested in joining? Fill out the form below and we'll follow up with dates and details.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>Recruitment Dates</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Info Night</h3>
+          <p>Date/time placeholder</p>
+        </div>
+        <div class="card">
+          <h3>Meet the Brothers</h3>
+          <p>Date/time placeholder</p>
+        </div>
+        <div class="card">
+          <h3>Bid Day</h3>
+          <p>Date/time placeholder</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="container">
+      <h2>Interest Form</h2>
+      <!--
+        Swap YOUR_FORM_ID below for a real Formspree endpoint (formspree.io),
+        or replace this <form> with a plain mailto: link if you'd rather not
+        set up a form service for the POC.
+      -->
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div>
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+          <label for="year">Graduation Year</label>
+          <input type="text" id="year" name="year">
+        </div>
+        <div>
+          <label for="message">Why are you interested?</label>
+          <textarea id="message" name="message" rows="4"></textarea>
+        </div>
+        <button class="btn" type="submit">Submit Interest</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Chapter Name. All rights reserved.</p>
+      <p><a href="contact.html">Contact us</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

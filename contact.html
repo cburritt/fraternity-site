@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter Name | Contact</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="nav-brand" href="index.html">CHAPTER LETTERS</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="rush.html">Rush</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" style="padding: 3rem 1.5rem;">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p>Questions about rush, events, or the chapter? Reach out below.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>Get In Touch</h2>
+      <p>Email: <a href="mailto:chapter@example.com">chapter@example.com</a></p>
+      <p>Address: [Chapter house address placeholder]</p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="container">
+      <h2>Send a Message</h2>
+      <!-- Same note as rush.html: swap in a real Formspree endpoint before this goes live. -->
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button class="btn" type="submit">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Chapter Name. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
