@@ -15,64 +15,66 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="exec.html">Exec Council</a></li>
-        <li><a href="events.html">Events</a></li>
+        <li><a href="housing.html">Housing</a></li>
         <li><a href="rush.html">Rush</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <section class="hero" style="padding: 3rem 1.5rem;">
+  <section class="hero hero-photo hero-banner" style="--house-photo: url('../assets/images/Konza-PKP.jpg');" role="img" aria-label="Pi Kappa Phi brothers at Konza Prairie">
     <div class="container">
       <h1>Rush Delta Chi</h1>
       <p>Interested in Pi Kappa Phi at Kansas State? Fill out the form below and we'll follow up with dates and details.</p>
     </div>
   </section>
 
-  <section>
-    <div class="container">
-      <h2>Recruitment Dates</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Info Night</h3>
-          <p>Date/time placeholder</p>
-        </div>
-        <div class="card">
-          <h3>Meet the Brothers</h3>
-          <p>Date/time placeholder</p>
-        </div>
-        <div class="card">
-          <h3>Bid Day</h3>
-          <p>Date/time placeholder</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="alt">
     <div class="container">
-      <h2>Interest Form</h2>
+      <h2 style="text-align: center;">Interest Form</h2>
       <!--
         Swap YOUR_FORM_ID below for a real Formspree endpoint (formspree.io),
         or replace this <form> with a plain mailto: link if you'd rather not
         set up a form service for the POC.
       -->
-      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <div>
-          <label for="name">Full Name</label>
-          <input type="text" id="name" name="name" required>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+        <div class="form-grid">
+          <div>
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" name="first_name" required>
+          </div>
+          <div>
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" name="last_name" required>
+          </div>
+          <div>
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+          <div>
+            <label for="hometown">Hometown</label>
+            <input type="text" id="hometown" name="hometown" required>
+          </div>
+          <div>
+            <label for="gpa">Current GPA</label>
+            <input type="text" id="gpa" name="gpa" placeholder="e.g. 3.75" required>
+          </div>
+          <div>
+            <label for="grad-year">Estimated College Graduation Year</label>
+            <input type="text" id="grad-year" name="grad_year" placeholder="e.g. 2029" required>
+          </div>
         </div>
         <div>
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
+          <label for="activities">Sports/Clubs/Activities Involved In</label>
+          <textarea id="activities" name="activities" rows="3" required></textarea>
         </div>
         <div>
-          <label for="year">Graduation Year</label>
-          <input type="text" id="year" name="year">
+          <label for="message">Why Are You Interested in Joining Pi Kappa Phi?</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
         </div>
         <div>
-          <label for="message">Why are you interested?</label>
-          <textarea id="message" name="message" rows="4"></textarea>
+          <label for="referral">Who Referred You? (if applicable)</label>
+          <input type="text" id="referral" name="referral">
         </div>
         <button class="btn" type="submit">Submit Interest</button>
       </form>

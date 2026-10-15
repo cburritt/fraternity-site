@@ -110,15 +110,111 @@ a:hover { text-decoration: underline; }
 }
 
 .hero-photo {
+  position: relative;
+  overflow: hidden;
   min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-bottom: none;
+}
+
+.hero-photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   background-image: linear-gradient(180deg, rgba(10, 23, 48, 0.45) 0%, rgba(10, 23, 48, 1) 100%), var(--house-photo, none);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-bottom: none;
+  animation: hero-zoom 2.4s ease-out both;
+}
+
+/* fixed-height banner locked to the photo's native height. Width follows
+   the viewport; background-size: contain shows the full photo uncropped,
+   letterboxing with navy on screens wider than the photo's native 1024px */
+.hero-photo.hero-banner {
+  min-height: 0;
+  height: 209px;
+  padding: 1rem 1.5rem;
+}
+
+.hero-photo.hero-banner::before {
+  background-size: cover, contain;
+  background-color: var(--color-navy-dark);
+}
+
+.hero-photo .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-photo h1,
+.hero-photo p,
+.hero-photo .btn {
+  animation: hero-rise 0.8s ease-out both;
+}
+
+.hero-photo h1 { animation-delay: 0.35s; }
+.hero-photo p { animation-delay: 0.55s; }
+.hero-photo .btn { animation-delay: 0.75s; }
+
+/* index's hero sits behind the full-screen intro overlay, so its rise
+   is timed to start as that overlay dissolves rather than on page load */
+.hero-photo.intro-timed h1 { animation-delay: 1.3s; }
+.hero-photo.intro-timed p { animation-delay: 1.5s; }
+.hero-photo.intro-timed .btn { animation-delay: 1.7s; }
+
+@keyframes hero-zoom {
+  from { transform: scale(1.12); filter: brightness(0.6); }
+  to { transform: scale(1); filter: brightness(1); }
+}
+
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Full-screen intro (index only) ---- */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-navy-dark);
+  animation: intro-fade 0.6s ease-in 1.3s forwards;
+}
+
+.intro-mark {
+  font-size: clamp(2.75rem, 9vw, 5.5rem);
+  font-weight: 700;
+  color: var(--color-gold-light);
+  opacity: 0;
+  letter-spacing: 0.4em;
+  animation: intro-mark-in 0.9s ease-out 0.15s forwards;
+}
+
+@keyframes intro-mark-in {
+  from { opacity: 0; letter-spacing: 0.6em; }
+  to { opacity: 1; letter-spacing: 0.15em; }
+}
+
+@keyframes intro-fade {
+  from { opacity: 1; }
+  to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-overlay { display: none; }
+
+  .hero-photo::before,
+  .hero-photo h1,
+  .hero-photo p,
+  .hero-photo .btn {
+    animation: none;
+  }
 }
 
 .hero h1 {
@@ -233,12 +329,149 @@ section h2 {
   color: var(--color-text-muted);
 }
 
-/* ---- Forms ---- */
-form { display: flex; flex-direction: column; gap: 1rem; max-width: 480px; }
+/* ---- contact leadership, big photo left info right ---- */
+.leader-section {
+  padding: 4rem 0;
+}
 
-label { font-weight: 600; font-size: 0.9rem; color: var(--color-text); }
+.leader-row {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.leader-photo {
+  flex: 0 0 380px;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 2px solid rgba(205, 163, 73, 0.35);
+  background: var(--color-navy);
+}
+
+.leader-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.leader-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.leader-role {
+  font-weight: 700;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.25rem;
+}
+
+.leader-section h2 {
+  font-size: 2.5rem;
+  color: var(--color-text);
+  margin-bottom: 0.4rem;
+}
+
+.leader-meta {
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.leader-bio {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+}
+
+.leader-contact {
+  border-top: 1px solid rgba(205, 163, 73, 0.25);
+  padding-top: 1.25rem;
+  font-size: 1.1rem;
+}
+
+.leader-contact p {
+  margin-bottom: 0.4rem;
+}
+
+@media (max-width: 800px) {
+  .leader-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.75rem;
+  }
+
+  .leader-photo {
+    flex-basis: auto;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .leader-section h2 {
+    font-size: 2rem;
+  }
+}
+
+/* ---- housing, video on top info below ---- */
+.video-wrap {
+  max-width: 900px;
+  margin: 0 auto 2.5rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 2px solid rgba(205, 163, 73, 0.35);
+  background: #000;
+}
+
+.video-wrap video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.housing-body {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.housing-body p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+/* ---- Forms ---- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  align-items: end;
+}
+
+form div { min-width: 0; }
+
+label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  margin-bottom: 0.4rem;
+}
 
 input, textarea, select {
+  display: block;
+  width: 100%;
+  max-width: 100%;
   padding: 0.65rem;
   border: 1px solid rgba(205, 163, 73, 0.3);
   border-radius: var(--radius);
@@ -247,9 +480,25 @@ input, textarea, select {
   color: var(--color-text);
 }
 
+textarea { resize: vertical; }
+
+input::placeholder, textarea::placeholder { color: var(--color-text-muted); }
+
 input:focus, textarea:focus, select:focus {
   outline: none;
   border-color: var(--color-gold);
+}
+
+form.was-validated input:invalid,
+form.was-validated textarea:invalid,
+form.was-validated select:invalid {
+  border-color: #e05252;
+  animation: field-flash 0.4s ease;
+}
+
+@keyframes field-flash {
+  0%, 100% { background-color: var(--color-surface); }
+  40% { background-color: rgba(224, 82, 82, 0.3); }
 }
 
 /* ---- Footer ---- */
